@@ -150,3 +150,18 @@ body {
     background: #0ff;
     color: #000;
 }
+.tile.vanish {
+  animation: vanish 160ms ease-out forwards;
+}
+@keyframes vanish {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.3); }
+}
+
+.tile.anim-swap {
+  transform: scale(1.15);
+  transition: transform 150ms;
+}
+
+/* класс для пустых (если нужно) */
+.tile.empty { background: transparent; }
