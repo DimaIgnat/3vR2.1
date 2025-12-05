@@ -1,160 +1,80 @@
 body {
-  background: #0c0c0f;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: #fff;
-  overflow: hidden;
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
 .top-bar {
-  padding: 12px;
-  background: #101014;
-}
-.level {
-  margin-bottom: 8px;
-  font-size: 18px;
-}
-.xp-bar {
-  width: 100%;
-  height: 12px;
-  background: #222;
-  border-radius: 6px;
-  overflow: hidden;
-}
-#xp-fill {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, #0ff, #09f);
-  transition: width 0.4s ease;
+    margin-top: 10px;
 }
 
-/* Игровое поле */
-.game-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(100vh - 150px);
-}
-#board {
-  width: 360px;
-  height: 360px;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  gap: 5px;
+#game {
+    width: 360px;
+    height: 360px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
 }
 
-.tile {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: gray;
-  transition: transform 0.2s ease, top 0.25s ease;
-  position: relative;
+.cell {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.c1 { background: #ff595e; }
-.c2 { background: #ffca3a; }
-.c3 { background: #8ac926; }
-.c4 { background: #1982c4; }
-.c5 { background: #6a4c93; }
-
-.selected {
-  box-shadow: 0 0 12px #0ff;
-  transform: scale(1.15);
+.fall {
+    animation: fall 0.25s ease;
 }
 
-/* Level Up */
-#levelup-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(4px);
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-.levelup-window {
-  width: 260px;
-  padding: 20px;
-  background: #0e0e15;
-  border: 2px solid #0ff;
-  box-shadow: 0 0 25px #0ff;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.levelup-window h2 {
-  margin: 0;
-  font-size: 26px;
-  color: #0ff;
-  text-shadow: 0 0 12px #0ff;
-}
-.levelup-window h3 {
-  font-size: 38px;
-  margin: 15px 0;
-  color: #fff;
-}
-#level-ok {
-  background: #0ff;
-  color: #000;
-  padding: 10px 22px;
-  border: none;
-  font-size: 16px;
-  border-radius: 8px;
-  margin-top: 15px;
-}
-.scan-line {
-  position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 40px;
-  background: linear-gradient(180deg, transparent, rgba(0,255,255,0.2), transparent);
-  animation: scan 2s linear infinite;
-}
-@keyframes scan {
-  0% { top: -40px; }
-  100% { top: 260px; }
+@keyframes fall {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-/* Нижнее меню */
-.bottom-menu {
-  background: #111;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
+.tabs {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #222;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
 }
+
 .tab {
-  background: #222;
-  padding: 10px;
-  border: none;
-  color: #fff;
-  border-radius: 6px;
-}
-.tab.active {
-  background: #0ff;
-  color: #000;
+    background: #333;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 10px;
 }
 
-/* Профиль */
-#profile-container {
-  position: absolute;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #111;
-  padding: 20px;
-  border-radius: 12px;
-  display: none;
+.profile-window {
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    background: #222;
+    padding: 20px;
+    border-radius: 15px;
 }
-#profile-container.visible { display: block; }
 
-/* Анимации */
-.tile.vanish { animation: vanish 200ms ease-out forwards; }
-@keyframes vanish {
-  from { opacity: 1; transform: scale(1); }
-  to { opacity: 0; transform: scale(0.3); }
+.hidden {
+    display: none;
 }
-.tile.anim-swap { transform: scale(1.15); transition: transform 150ms; }
-.tile.empty { background: transparent; }
+
+.close-btn {
+    margin-top: 10px;
+}
