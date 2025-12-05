@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Match 3 Tech</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="level">Уровень: <span id="level">1</span></div>
+    <div class="xp-bar"><div id="xp-fill"></div></div>
+</div>
+
+<div class="game-container">
+    <div id="board"></div>
+</div>
+
+<div class="bottom-menu">
+    <button class="tab active">Игра</button>
+    <button class="tab">Магазин</button>
+    <button class="tab">Инвентарь</button>
+    <button class="tab">Квесты</button>
+    <button class="tab">Профиль</button>
+</div>
+
+<!-- LEVEL UP -->
+<div id="levelup-overlay">
+    <div class="levelup-window">
+        <div class="scan-line"></div>
+        <h2>LEVEL UP!</h2>
+        <h3 id="new-level-num">2</h3>
+        <button id="level-ok">OK</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
