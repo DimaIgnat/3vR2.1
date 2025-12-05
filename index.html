@@ -1,45 +1,37 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Match 3 Tech 6x6</title>
-  <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match 3 Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="top-bar">
-  <div class="level">Уровень: <span id="level">1</span></div>
-  <div class="xp-bar"><div id="xp-fill"></div></div>
+    <div class="level">Уровень: <span id="level">1</span></div>
+    <div class="xp-bar">
+        <div id="xp-fill"></div>
+    </div>
 </div>
 
-<div class="game-container">
-  <div id="board"></div>
+<div id="game"></div>
+
+<div class="tabs">
+    <button class="tab active">Игра</button>
+    <button class="tab" onclick="openProfile()">Профиль</button>
 </div>
 
 <!-- Профиль -->
-<div id="profile-container" class="hidden">
-  <h2>Профиль</h2>
-  <label>Имя игрока:</label>
-  <input type="text" id="player-name"/>
-  <div>Уровень: <span id="profile-level">1</span></div>
-  <button id="save-name">Сохранить</button>
-</div>
+<div id="profile" class="profile-window hidden">
+    <h2>Профиль</h2>
+    <p>Имя:</p>
+    <input type="text" id="playerName" placeholder="Введите имя">
+    <button onclick="saveName()">Сохранить имя</button>
 
-<!-- LEVEL UP -->
-<div id="levelup-overlay">
-  <div class="levelup-window">
-    <div class="scan-line"></div>
-    <h2>LEVEL UP!</h2>
-    <h3 id="new-level-num">2</h3>
-    <button id="level-ok">OK</button>
-  </div>
-</div>
+    <p>Ваш уровень: <span id="profileLevel">1</span></p>
 
-<!-- Нижнее меню -->
-<div class="bottom-menu">
-  <button class="tab active" data-tab="game">Игра</button>
-  <button class="tab" data-tab="profile">Профиль</button>
+    <button onclick="closeProfile()" class="close-btn">Закрыть</button>
 </div>
 
 <script src="script.js"></script>
