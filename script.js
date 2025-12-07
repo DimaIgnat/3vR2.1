@@ -13,11 +13,56 @@ const levelWindow = document.getElementById("levelup-overlay");
 const newLevelNum = document.getElementById("new-level-num");
 document.getElementById("level-ok").onclick = () => levelWindow.style.display = "none";
 
-// --- Профиль
-const profileContainer = document.getElementById("profile-container");
-const playerNameInput = document.getElementById("player-name");
-const profileLevelEl = document.getElementById("profile-level");
-const saveNameBtn = document.getElementById("save-name");
+// --- XP и уровень ---
+let level = parseInt(localStorage.getItem("level") || "1");
+let xp = parseInt(localStorage.getItem("xp") || "0");
+let xpToNext = 100;
+
+document.getElementById("levelValue").textContent = level;
+document.getElementById("xpText").textContent = xp + " / " + xpToNext + " XP";
+updateXPBar();
+
+function addXP(amount) {
+    xp += amount;
+
+    if (xp >= xpToNext) {
+        xp = xp - xpToNext;
+        level++;
+        localStorage.setItem("level", level);
+        document.getElementById("levelValue").textContent = level;
+        document.getElementById("playerLevel").textContent = level;
+    }
+
+    localStorage.setItem("xp", xp);
+    document.getElementById("xpText").textContent = xp + " / " + xpToNext + " XP";
+    updateXPBar();
+}
+
+function updateXPBar() {
+    let percent = (xp / xpToNext) * 100;
+    document.getElementById("xpFill").style.width = percent + "%";
+}
+
+// --- Профиль ---
+document.getElementById("playerNameInput").value =
+    localStorage.getItem("playerName") || "Игрок";
+
+document.getElementById("playerLevel").textContent = level;
+
+function saveProfile() {
+    let name = document.getElementById("playerNameInput").value;
+    localStorage.setItem("playerName", name);
+    alert("Сохранено!");
+}
+
+// --- Tabs ---
+function openTab(tab) {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
+
+    document.querySelector(`[onclick="openTab('${tab}')"]`).classList.add("active");
+    document.getElementById(tab).classList.add("active");
+}
 
 // Загрузка имени
 let playerName = localStorage.getItem("playerName") || "Игрок";
