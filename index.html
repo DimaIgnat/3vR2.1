@@ -1,47 +1,40 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Match 3 Tech 6x6</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Match3 Stones</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header class="top-bar">
+    <div id="levelDisplay">Уровень: <span id="levelValue">1</span></div>
+    <div class="xp-wrap">
+      <div id="xpText">0 / 100 XP</div>
+      <div class="xp-bar"><div id="xpFill"></div></div>
+    </div>
+  </header>
 
-<div class="top-bar">
-  <div class="level">Уровень: <span id="level">1</span></div>
-  <div class="xp-bar"><div id="xp-fill"></div></div>
-</div>
+  <main class="main">
+    <div id="board" class="board"></div>
+  </main>
 
-<div class="game-container">
-  <div id="board"></div>
-</div>
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-screen="game">Игра</button>
+    <button class="nav-btn" data-screen="profile">Профиль</button>
+  </nav>
 
-<!-- Профиль -->
-<div id="profile-container" class="hidden">
-  <h2>Профиль</h2>
-  <label>Имя игрока:</label>
-  <input type="text" id="player-name"/>
-  <div>Уровень: <span id="profile-level">1</span></div>
-  <button id="save-name">Сохранить</button>
-</div>
+  <section id="profile" class="screen hidden">
+    <div class="profile-box">
+      <h3>Профиль</h3>
+      <label>Имя</label>
+      <input id="playerName" placeholder="Ваше имя" />
+      <div class="profile-level">Уровень: <span id="profileLevel">1</span></div>
+      <button id="saveNameBtn">Сохранить</button>
+      <button id="closeProfileBtn">Закрыть</button>
+    </div>
+  </section>
 
-<!-- LEVEL UP -->
-<div id="levelup-overlay">
-  <div class="levelup-window">
-    <div class="scan-line"></div>
-    <h2>LEVEL UP!</h2>
-    <h3 id="new-level-num">2</h3>
-    <button id="level-ok">OK</button>
-  </div>
-</div>
-
-<!-- Нижнее меню -->
-<div class="bottom-menu">
-  <button class="tab active" data-tab="game">Игра</button>
-  <button class="tab" data-tab="profile">Профиль</button>
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
